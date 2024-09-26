@@ -3,22 +3,23 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<GameObject> items = new List<GameObject>();
+    public GameObject currentPowerUp;
+    public Transform fireballSpawnPoint;
 
-    public void AddItem(GameObject item)
+    public void AddPowerUp(GameObject powerUp)
     {
-        items.Add(item);
-        Debug.Log("Item added: " + item.name);
+        currentPowerUp = powerUp;
     }
 
-    public void RemoveItem(GameObject item)
-    {
-        items.Remove(item);
-        Debug.Log("Item removed: " + item.name);
-    }
-
-    public List<GameObject> GetItems()
-    {
-        return items;
+    public void Update(){
+        if (currentPowerUp != null && Input.GetKeyDown(KeyCode.Space))
+        {
+            // Use the item (instantiate it in the world)
+            if(currentPowerUp.name == "fireballprefeb")
+            {
+                Instantiate(currentPowerUp, fireballSpawnPoint.position, fireballSpawnPoint.rotation);
+                currentPowerUp = null;
+            }
+        }
     }
 }
