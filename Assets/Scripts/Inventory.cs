@@ -9,17 +9,19 @@ public class Inventory : MonoBehaviour
     public void AddPowerUp(GameObject powerUp)
     {
         currentPowerUp = powerUp;
+        Debug.Log("Fireball collected!");
     }
 
     public void Update(){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space key pressed");
+        }
         if (currentPowerUp != null && Input.GetKeyDown(KeyCode.Space))
         {
-            // Use the item (instantiate it in the world)
-            if(currentPowerUp.name == "fireballprefeb")
-            {
-                Instantiate(currentPowerUp, fireballSpawnPoint.position, fireballSpawnPoint.rotation);
-                currentPowerUp = null;
-            }
+            Instantiate(currentPowerUp, fireballSpawnPoint.position, fireballSpawnPoint.rotation);
+            currentPowerUp = null;
+           
         }
     }
 }
