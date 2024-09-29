@@ -238,8 +238,8 @@ GameObject:
   - component: {fileID: 215175335}
   - component: {fileID: 215175334}
   - component: {fileID: 215175333}
-  - component: {fileID: 215175336}
   - component: {fileID: 215175337}
+  - component: {fileID: 215175338}
   m_Layer: 0
   m_Name: Fireball Count
   m_TagString: Untagged
@@ -326,20 +326,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 178.304, z: 0}
---- !u!114 &215175336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215175332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8582435b94d6b694d8992d53f43ccb66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireballTextMesh: {fileID: 215175333}
-  fireballCount: 0
 --- !u!114 &215175337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +340,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 264607122}
   offset: {x: 9, y: 6, z: -5}
+--- !u!114 &215175338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215175332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b570752383d034685a725cba4d89b9cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballTextMesh: {fileID: 215175333}
+  fireballCount: 0
 --- !u!1 &247389787
 GameObject:
   m_ObjectHideFlags: 0
