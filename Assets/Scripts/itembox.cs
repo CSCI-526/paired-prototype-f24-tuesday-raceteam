@@ -6,6 +6,12 @@ public class itembox : MonoBehaviour
 {
     public GameObject fireballprefeb;
     private bool isCollected = false;
+    private FireballManager fireballManager;
+    void Start()
+    {
+        // Find the FireballManager in the scene (assuming it exists)
+        fireballManager = FindObjectOfType<FireballManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !isCollected)
@@ -13,6 +19,7 @@ public class itembox : MonoBehaviour
             isCollected = true;
             // Assume the player has an inventory system
             Inventory inventory = other.GetComponent<Inventory>();
+            fireballManager.AddFireball();
 
             if (inventory != null)
             {
