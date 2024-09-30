@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public GameObject currentPowerUp;
+    public List<GameObject> powerUps = new List<GameObject>();
     public Transform fireballSpawnPoint;
 
     public void AddPowerUp(GameObject powerUp)
     {
-        currentPowerUp = powerUp;
+        powerUps.Add(powerUp);
         Debug.Log("Fireball collected!");
     }
 
@@ -17,10 +17,10 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log("Space key pressed");
         }
-        if (currentPowerUp != null && Input.GetKeyDown(KeyCode.Space))
+        if (powerUps.Count > 0 && Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(currentPowerUp, fireballSpawnPoint.position, fireballSpawnPoint.rotation);
-            currentPowerUp = null;
+            Instantiate(powerUps[0], fireballSpawnPoint.position, fireballSpawnPoint.rotation);
+            powerUps.RemoveAt(0);
            
         }
     }

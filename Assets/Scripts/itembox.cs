@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class itembox : MonoBehaviour
 {
-    public GameObject fireballprefeb;
+    public GameObject fireballPrefab;
     private bool isCollected = false;
     private FireballManager fireballManager;
     void Start()
@@ -25,7 +25,7 @@ public class itembox : MonoBehaviour
             {
 
                 // Add item to player's inventory
-                inventory.AddPowerUp(fireballprefeb);
+                inventory.AddPowerUp(fireballPrefab);
 
                 // Destroy the item box after use
                 Destroy(gameObject);
