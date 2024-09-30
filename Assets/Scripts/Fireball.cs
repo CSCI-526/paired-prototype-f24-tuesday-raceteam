@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : PowerUp
 {
     public float speed = 10f;
     public float lifeTime = 5f;
 
     void Start()
     {
-        // Destroy the fireball after a set amount of time
-        Destroy(gameObject, lifeTime);
+        powerUpName = "Fireball";  // Set the power-up name
+        Destroy(gameObject, lifeTime);  // Destroy the fireball after a set amount of time
     }
 
     void Update()
@@ -27,5 +25,11 @@ public class Fireball : MonoBehaviour
             Destroy(other.gameObject); // Destroy the obstacle
             Destroy(gameObject); // Destroy the fireball
         }
+    }
+
+    public override void Activate()
+    {
+        // Define specific activation logic for the fireball if needed
+        Debug.Log("Fireball activated");
     }
 }

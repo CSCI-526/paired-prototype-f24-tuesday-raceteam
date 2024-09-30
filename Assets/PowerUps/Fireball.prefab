@@ -146,5 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b550f3ef0fa4783a4c45a30a96933c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpName: Fireball
   speed: 10
   lifeTime: 5
