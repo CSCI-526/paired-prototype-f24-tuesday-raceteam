@@ -4,48 +4,55 @@ using UnityEngine;
 
 public class FireballManager : MonoBehaviour
 {
-    public TextMesh fireballTextMesh;  // Reference to the TextMesh component
-    public int fireballCount = 0;  // Start with 0 fireballs
+    public TextMesh fireballTextMesh; 
+    public Inventory playerInventory;  
 
     void Start()
     {
-        UpdateFireballText();  // Initialize the fireball count on start
-    }
-
-    // Function to update the text in TextMesh
-    void UpdateFireballText()
-    {
-        fireballTextMesh.text = "Fireballs: " + fireballCount;  // Update the TextMesh content
-    }
-
-    // Function to increase the fireball count
-    public void AddFireball()
-    {
-        fireballCount++;  // Increase fireball count
-        UpdateFireballText();  // Update the displayed count
-    }
-
-    // Call this function to release a fireball
-    public void ReleaseFireball()
-    {
-        if (fireballCount > 0)
+        if (playerInventory == null)
         {
-            fireballCount--;  // Reduce fireball count
-            UpdateFireballText();  // Update the displayed count
-            // Add logic to launch the fireball if needed
+            Debug.LogError("Player Inventory is not set in FireballManager.");
+            return;
         }
-        else
-        {
-            Debug.Log("No more fireballs!");
-        }
+
+        // ensure that the inventory is initialized
+        StartCoroutine(InitializeFireballText());
     }
 
-    // Example: If using the spacebar to release a fireball
+    IEnumerator InitializeFireballText()
+    {
+        // wait for the end of the frame to make sure that the Inventory is initialized
+        yield return new WaitForEndOfFrame();
+        UpdateFireballText();  
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (playerInventory != null)
         {
-            ReleaseFireball();
+            UpdateFireballText(); 
+        }
+    }
+
+    void UpdateFireballText()
+    {
+        if (playerInventory == null)
+        {
+            Debug.LogError("Player Inventory is not set in FireballManager.");
+            return;
+        }
+
+        try
+        {
+            fireballTextMesh.text = "Fire: " + playerInventory.materials["Fire"] +
+                                    "\nWater: " + playerInventory.materials["Water"] +
+                                    "\nBall: " + playerInventory.materials["Ball"] +
+                                    "\nFireballs: " + playerInventory.powerUps["Fireball"] +
+                                    "\nWaterballs: " + playerInventory.powerUps["Waterball"];
+        }
+        catch (KeyNotFoundException e)
+        {
+            Debug.LogError("Key not found in dictionary: " + e.Message);
         }
     }
 }
