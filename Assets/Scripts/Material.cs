@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itembox : MonoBehaviour
+public class Material : MonoBehaviour
 {
     public string materialType; 
-    private bool isCollected = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !isCollected)
+        if (other.CompareTag("Player"))
         {
-            isCollected = true;
             Inventory inventory = other.GetComponent<Inventory>();
             if (inventory != null)
             {

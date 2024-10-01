@@ -6,16 +6,22 @@ public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
     public Vector3 offset;
-    // Start is called before the first frame update
+
+    // start is called before the first frame is updated
     void Start()
     {
-        
+        if (player == null)
+        {
+            Debug.LogError("Player GameObject is not assigned in FollowPlayer script.");
+        }
     }
 
-    // Update is called once per frame
+    // update is called once per frame
     void LateUpdate()
     {
-        
-        transform.position = player.transform.position + offset;
+        if (player != null)
+        {
+            transform.position = player.transform.position + offset;
+        }
     }
 }
